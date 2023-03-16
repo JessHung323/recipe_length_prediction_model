@@ -91,6 +91,14 @@ We believe `protein` may be a useful column because in general, a recipe with pr
 
 Finally, we added the `rating_average` feature because a recipe that takes too much time may receive a lower rating as users have to devote much more effort.
 
+To extract useful information from the `tags` column, we transformed the tags in the form of strings to list of strings. However, as we attempted to generate the most common tags from the entire dataframe, the process was not successful due to the size of the data. We decided to randomly choose 2000 tags from the column and retrieved the top 50 most common tags. After browsing through the tags, we chose the one most relevant to time:
 
+- '1-day-or-more'
+- '15-minutes-or-less'
+- '30-minutes-or-less'
+- '4-hours-or-less'
+- '60-minutes-or-less'
+
+We created 5 new features using the tags from above, indicating whether one recipe contains the tag (1: True, 0: False)
 
 
