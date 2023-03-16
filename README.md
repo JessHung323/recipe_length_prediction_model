@@ -100,5 +100,5 @@ To extract useful information from the `tags` column, we transformed the tags in
 - '60-minutes-or-less'
 
 We created 5 new features using the tags from above, indicating whether one recipe contains the tag (1: True, 0: False)
-
+<!-- Fill in dataframe -->
 
