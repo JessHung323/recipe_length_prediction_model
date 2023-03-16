@@ -47,14 +47,17 @@ In our baseline model, we chose the two most intuitive features at first glance 
 ***Feature Description***
 
 `'n_steps'`:
-This feature is quantitative. Some relevant statistics include:
+This feature is quantitative. 
 
+Some relevant statistics include:
 - mean: 10.017831
 - std: 6.442330
 - max: 100.000000
 
 `'n_ingredients'`:
-This feature is quantitative as well. Some relevant statistics include:
+This feature is quantitative as well. 
+
+Some relevant statistics include:
 - mean: 9.071652
 - std: 3.822948
 - max: 37.000000
@@ -101,4 +104,18 @@ To extract useful information from the `tags` column, we transformed the tags in
 
 We created 5 new features using the tags from above, indicating whether one recipe contains the tag (1: True, 0: False)
 <!-- Fill in dataframe -->
+
+We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last step in our pipeline, we chose to use DecisionTreeRegressor as the estimator object, instead of LinearRegressor.
+`preproc = ColumnTransformer(
+    transformers = [
+        ('rating_average', Binarizer(threshold = 4), ['rating_average']),
+        ('protein', StandardScaler(), ['protein', 'n_steps', 'n_ingredients']),
+    ],
+    remainder = 'drop'
+)
+pip = Pipeline([
+    ('preprocessor', preproc),
+    ('tree', DecisionTreeRegressor(max_depth = 25))
+])
+pip.fit(c.drop('minutes', axis = 1), c['minutes'])` 
 
