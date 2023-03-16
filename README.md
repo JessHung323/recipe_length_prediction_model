@@ -107,7 +107,7 @@ We created 5 new features using the tags from above, indicating whether one reci
 
 We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last step in our pipeline, we chose to use DecisionTreeRegressor as the estimator object, instead of LinearRegressor().
 
-We encountered issues with the `ratint_average` column as some recipes have not been used by
+We encountered issues with the `rating_average` column as some recipes have not been rated. To address this issue, we randomly sampled a number of `rating_average` from the column to fill into the null values.
 
 If we select the max_depth of the DecisionTree to be 25, the result yielded is as follows:
 - pipeline score (R^2): 0.6980284251748017
