@@ -76,6 +76,21 @@ We can see that the standard deviation of the variable is significantly higher t
 
 After furthuring the data cleaning step, we can see that the R^2 score has improved for our baseline model, and the RMSE descreased drastically. This also suggests that our model may not be well-generalized to unseen data because it is possible for testing data to contain recipes with minutes that are way beyond the threshold that was used to determine outliers in our data cleaning process.
 
-In addition, when we plot a scatterplot visualizing the relationship between `n_steps` and `n_ingredients` with `minutes` respectively, we see that their relationships are not linear 😟 This is a factor we will take into consideration building a more informative model later. 
+In addition, when we plot a scatterplot visualizing the relationship between `n_steps` and `n_ingredients` with `minutes` respectively, we see that their relationships are not linear 😟 This is a factor we will take into consideration when building a more informative model later. 
 
 ## **Final Model**
+
+***Relevant Columns***: `'minutes'`, `'n_steps'`, `'n_ingredients'`, `tags`, `protein`, `rating_average`
+
+We incorporated three new features in our final model. 
+
+We chose `tags` because we observed that there are tags within the column for each recipe that indicate how long the recipe might take. For example, there exist tags such as "60-minutes-or-less" and "1-day-or-more". These tags may be a useful indicator and predictor for our model.
+
+
+We believe `protein` may be a useful column because in general, a recipe with protein (more meat) will take longer to cook thoroughly.
+
+Finally, we added the `rating_average` feature because a recipe that takes too much time may receive a lower rating as users have to devote much more effort.
+
+
+
+
