@@ -110,5 +110,5 @@ We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last s
 We encountered issues with the `ratint_average` column as some recipes have not been used by
 
 If we select the max_depth of the DecisionTree to be 25, the result yielded is as follows:
-- pipeline score (R^2): 0.6632343840875179
-- pipeline RMSE: 14.395653930339554
+- pipeline score (R^2): 0.6980284251748017
+- pipeline RMSE: 13.620260323593023
