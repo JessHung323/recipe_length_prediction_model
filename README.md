@@ -36,6 +36,8 @@ We performed similar data cleaning process as we did in our previous project.
 ***Relevant Columns***: `'minutes'`, `'rating_average'`, `'n_steps'`, `'n_ingredients'`, `'tags'`, `'protein'`
 
 
+
+
 ## **Baseline Model**
 
 ***Relevant Columns***: `'minutes'`, `'n_steps'`, `'n_ingredients'`
@@ -61,11 +63,19 @@ We used the `StandardScaler` from sklearn to standardize both the `'n_steps'` an
 - pipeline score (R^2): 0.0029099031128849706
 - pipeline RMSE: 811.5809989228383
 
-From the results above we can see that our baseline model performed poorly. We analyzed the response variable `minutes` and retrieved the following statistics:
+From the results above we can see that our baseline model performed poorly 😨 
+
+We analyzed the response variable `minutes` and retrieved the following statistics:
 - mean: 94.936478
 - std: 812.766127
 - max: 86415.000000
 
 We can see that the standard deviation of the variable is significantly higher than that of `n_steps` and `n_ingredients`. We decided to remove the outlier rows using the standard method of determining outlier values (as we did in Project 3). When we run the baseline model again on the new dataframe, we see the following result:
-- pipeline score (R^2): 0.0029099031128849706
-- pipeline RMSE: 811.5809989228383
+- pipeline score (R^2): 0.23434163141717024
+- pipeline RMSE: 21.687973493850077
+
+After furthuring the data cleaning step, we can see that the R^2 score has improved for our baseline model, and the RMSE descreased drastically. This also suggests that our model may not be well-generalized to unseen data because it is possible for testing data to contain recipes with minutes that are way beyond the threshold that was used to determine outliers in our data cleaning process.
+
+In addition, when we plot a scatterplot visualizing the relationship between `n_steps` and `n_ingredients` with `minutes` respectively, we see that their relationships are not linear 😟 This is a factor we will take into consideration building a more informative model later. 
+
+## **Final Model**
