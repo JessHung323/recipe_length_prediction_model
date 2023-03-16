@@ -106,6 +106,7 @@ We created 5 new features using the tags from above, indicating whether one reci
 <!-- Fill in dataframe -->
 
 We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last step in our pipeline, we chose to use DecisionTreeRegressor as the estimator object, instead of LinearRegressor.
+
 `preproc = ColumnTransformer(
     transformers = [
         ('rating_average', Binarizer(threshold = 4), ['rating_average']),
