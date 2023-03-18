@@ -116,4 +116,35 @@ If we select the `max_depth` and `min_sample_split` of the DecisionTree to be 5,
 - pipeline score (R^2): 0.8929511159009624
 - pipeline RMSE: 8.109488244776092
 
-These results are the most optimal from what we have tested. We manually tested out different max_depth hyperparameter for our DecisionTreeRegressor. 
+These results are the most optimal from what we have tested. We used GridSearchCV to determine the final max_depth and min_sample_split hyperparameters for our DecisionTreeRegressor. 
+
+Our final model is an improvement compared to the baseline model not only by outputting better R^2 and RMSE values. Our model takes into account that the relationship between variables and `'minutes'` is not linear, hence we used the DecisionTreeRegressor. In addition, we performed train_test_split on our data to check how well our model generalizes to unseen data. After dropping the outliers from the dataset, our model consistently produces an R^2 of roughly 0.89. However, we do acknowledge that if we were to predict an extreme outlier, similar to some of the data points we've dropped at the beginning of the analysis, our model would not perform as well. From the original dataframe, we chose the data points that are under the 93rd percentile in the `'minutes'` column. When we used our trained pipeline on this dataset, we see a score of 0.75, which is still significantly better than our baseline model. 
+
+
+## **Fairness Analysis**
+
+***Group X***: protein under average of the protein from the final model
+
+***Group y***: protein equal to or over the average of the protein from the final model
+
+***Metric***: mean protein from the final model
+
+***Null Hypothesis***: the accuracy of the two groups (equal to or over avg_protein and under avg_protein) are the same, and the difference was by random chance.
+
+***Alternative Hypothesis***: the accuracy of the two groups (equal and over avg_protein and under avg_protein) are different, and the difference was NOT by random chance.
+
+***p_value***: 0.09
+
+***Conclusion***: Since the resulting p-value is higher than the chosen significance level (0.05), we fail to reject the null, meaning the difference in accuracy across the two groups might NOT be significant.
+
+
+
+
+
+
+
+
+
+
+
+
