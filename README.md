@@ -14,7 +14,7 @@
 {:toc}
 ---
 
-## **Introduction**
+## **Framing the Problem**
 From last time, we explored the relationship between the time (in minutes) a recipe takes and its corresponding rating, and answer the question:
 
 ***What is the relationship between the cooking time and average rating of recipes?***
