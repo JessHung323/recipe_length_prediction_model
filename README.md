@@ -21,9 +21,9 @@ From last time, we explored the relationship between the time (in minutes) a rec
 
 This time in this project, we aim to derive features from the given dataset to:
 
-***predict the time a recipe takes to prepare*** 
+***Predict the time, in minutes, a recipe takes to prepare*** 
 
-Since we are predicting a numeric variable with non-finite choices, we will be using regression, instead of classification. We chose to predict the `'minutes'` column of the dataframe because as users of recipes, we wish to follow recipes that generally don't take too long to complete. If we were told features such as the number of ingredients needed or number steps the the recipe has, we can perhaps have a relatively accurate estimate of how long that recipe would take before fully committing to executing it.
+Since we are predicting a numeric variable with non-finite choices, we will be using regression, instead of classification. We chose to predict the `'minutes'` column of the dataframe because as users of recipes, we wish to follow recipes that generally don't take too long to complete and we would like to have a rough estimate on how long the recipe would take. If we were told features such as the number of ingredients needed or number steps the the recipe has, we can perhaps have a relatively accurate estimate of how long that recipe would take before fully committing to executing it.
 
 In this project, we would use R^2 score and the Root Mean Squared Error (RMSE) to analyze the accuracy of our predictions on the training dataset. These scores and metrics are more intuitive for readers and easy to interpret as we try to predict a numeric variable.
 
@@ -87,7 +87,7 @@ In addition, when we plot a scatterplot visualizing the relationship between `'n
 
 We incorporated three new features in our final model. 
 
-We chose `‘tags’` because we observed that there are tags within the column for each recipe that indicate how long the recipe might take. For example, there exist tags such as "60-minutes-or-less" and "1-day-or-more". These tags may be a useful indicator and predictor for our model.
+We chose `'tags'` because we observed that there are tags within the column for each recipe that indicate how long the recipe might take. For example, there exist tags such as "60-minutes-or-less" and "1-day-or-more". These tags may be a useful indicator and predictor for our model.
 
 
 We believe `'protein'` may be a useful column because in general, a recipe with protein (more meat) will take longer to cook thoroughly.
@@ -96,7 +96,7 @@ Finally, we added the `'rating_average'` feature because a recipe that takes too
 
 To extract useful information from the `'tags'` column, we transformed the tags in the form of strings to list of strings. However, as we attempted to generate the most common tags from the entire dataframe, the process was not successful due to the size of the data. We decided to randomly choose 2000 tags from the column and retrieved the top 50 most common tags. After browsing through the tags, we chose the ones most relevant to time:
 
-- '1-day-or-more'
+- 'occasion'
 - '15-minutes-or-less'
 - '30-minutes-or-less'
 - '4-hours-or-less'
@@ -109,11 +109,11 @@ We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last s
 
 We encountered issues with the `'rating_average'` column as some recipes have not been rated. To address this issue, we randomly sampled a number of values from the `'rating_average'` column to fill the np.NaN. Since there are mutiple columns that do not contain the information we need, such as `'id'`, `'name'`, etc. We choose to drop the qualitative columns from our dataframe. Now the only remaing columns are:
 
-`'minutes'`, `'n_steps'`, `'n_ingredients'`, `'rating_average'`, `'protein'`,`'1-day-or-more'`, `'4-hours-or-less'`, `'60-minutes-or-less'`, `'30-minutes-or-less'`, `'15-minutes-or-less'`
+`'minutes'`, `'n_steps'`, `'n_ingredients'`, `'rating_average'`, `'protein'`,`'occasion'`, `'4-hours-or-less'`, `'60-minutes-or-less'`, `'30-minutes-or-less'`, `'15-minutes-or-less'`
 
 
-If we select the `max_depth of the DecisionTree to be 27, the result yielded is as follows:
-- pipeline score (R^2): 0.7011461686446547
-- pipeline RMSE: 13.54976584961644
+If we select the `max_depth` and `min_sample_split` of the DecisionTree to be 5, the result yielded is as follows:
+- pipeline score (R^2): 0.8929511159009624
+- pipeline RMSE: 8.109488244776092
 
 These results are the most optimal from what we have tested. We manually tested out different max_depth hyperparameter for our DecisionTreeRegressor. 
