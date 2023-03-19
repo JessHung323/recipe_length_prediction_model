@@ -182,7 +182,7 @@ We created 5 new features using the tags from above, indicating whether one reci
 	</tbody>
 </table>
 
-We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last step in our pipeline, we chose to use DecisionTreeRegressor as the estimator object, instead of LinearRegressor().
+We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last step in our pipeline, we chose to use DecisionTreeRegressor() as the estimator object, instead of LinearRegressor().
 
 We encountered issues with the `'rating_average'` column as some recipes have not been rated. To address this issue, we randomly sampled a number of values from the `'rating_average'` column to fill the np.NaN. Since there are mutiple columns that do not contain the information we need, such as `'id'`, `'name'`, etc. We choose to drop the qualitative columns from our dataframe. Now the only remaing columns are:
 
@@ -193,7 +193,7 @@ If we select the `max_depth` and `min_sample_split` of the DecisionTree to be 5,
 - pipeline score (R^2): 0.8929511159009624
 - pipeline RMSE: 8.109488244776092
 
-These results are the most optimal from what we have tested. We used GridSearchCV to determine the final max_depth and min_sample_split hyperparameters for our DecisionTreeRegressor. 
+These results are the most optimal from what we have tested. We used GridSearchCV to determine the final max_depth and min_sample_split hyperparameters for our DecisionTreeRegressor(). 
 
 Our final model is an improvement compared to the baseline model not only by outputting better R^2 and RMSE values. Our model takes into account that the relationship between variables and `'minutes'` is not linear, hence we used the DecisionTreeRegressor. In addition, we performed train_test_split on our data to check how well our model generalizes to unseen data. After dropping the outliers from the dataset, our model consistently produces an R^2 of roughly 0.89. However, we do acknowledge that if we were to predict an extreme outlier, similar to some of the data points we've dropped at the beginning of the analysis, our model would not perform as well. From the original dataframe, we chose the data points that are under the 93rd percentile in the `'minutes'` column. When we used our trained pipeline on this dataset, we see a score of 0.75, which is still significantly better than our baseline model. 
 
