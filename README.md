@@ -32,6 +32,7 @@ From our dataset, we transformed the string dates in the `'submitted'` column to
 ### **Dataset Brief Overview**
 
 We performed similar data cleaning process as we did in our previous project.
+[Project 3](https://jesshung323.github.io/recipe-user-interaction-analysis/)
 
 ***Relevant Columns***: `'minutes'`, `'rating_average'`, `'n_steps'`, `'n_ingredients'`, `'tags'`, `'protein'`
 
