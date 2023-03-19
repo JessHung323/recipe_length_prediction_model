@@ -73,7 +73,7 @@ We analyzed the response variable `'minutes'` and retrieved the following statis
 - std: 812.766127
 - max: 86415.000000
 
-We can see that the standard deviation of the variable is significantly higher than that of `'n_steps'` and `'n_ingredients'`. We decided to remove the outlier rows using the standard method of determining outlier values (as we did in [Project 3](https://jesshung323.github.io/recipe-user-interaction-analysis/#data-cleaning). When we run the baseline model again on the new dataframe, we see the following result:
+We can see that the standard deviation of the variable is significantly higher than that of `'n_steps'` and `'n_ingredients'`. We decided to remove the outlier rows using the standard method of determining outlier values (as we did in [Project 3](https://jesshung323.github.io/recipe-user-interaction-analysis/#data-cleaning)). When we run the baseline model again on the new dataframe, we see the following result:
 - pipeline score (R^2): 0.23434163141717024
 - pipeline RMSE: 21.687973493850077
 
