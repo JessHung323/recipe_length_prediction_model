@@ -62,7 +62,7 @@ Some relevant statistics include:
 - std: 3.822948
 - max: 37.000000
 
-We used the `StandardScaler` from sklearn to standardize both the `'n_steps'` and `'n_ingredients'` columns in a pipeline with LinearRegression() as the estimator. The result yielded is as follows:
+We used the `StandardScaler` from sklearn to standardize both the `'n_steps'` and `'n_ingredients'` columns in a pipeline with LinearRegressor() as the estimator. The result yielded is as follows:
 - pipeline score (R^2): 0.0029099031128849706
 - pipeline RMSE: 811.5809989228383
 
@@ -73,7 +73,7 @@ We analyzed the response variable `'minutes'` and retrieved the following statis
 - std: 812.766127
 - max: 86415.000000
 
-We can see that the standard deviation of the variable is significantly higher than that of `'n_steps'` and `'n_ingredients'`. We decided to remove the outlier rows using the standard method of determining outlier values (as we did in Project 3). When we run the baseline model again on the new dataframe, we see the following result:
+We can see that the standard deviation of the variable is significantly higher than that of `'n_steps'` and `'n_ingredients'`. We decided to remove the outlier rows using the standard method of determining outlier values (as we did in [Project 3](https://jesshung323.github.io/recipe-user-interaction-analysis/#data-cleaning). When we run the baseline model again on the new dataframe, we see the following result:
 - pipeline score (R^2): 0.23434163141717024
 - pipeline RMSE: 21.687973493850077
 
@@ -94,7 +94,7 @@ We believe `'protein'` may be a useful column because in general, a recipe with 
 
 Finally, we added the `'rating_average'` feature because a recipe that takes too much time may receive a lower rating as users have to devote much more effort.
 
-To extract useful information from the `'tags'` column, we transformed the tags in the form of strings to list of strings. However, as we attempted to generate the most common tags from the entire dataframe, the process was not successful due to the size of the data. We decided to randomly choose 2000 tags from the column and retrieved the top 50 most common tags. After browsing through the tags, we chose the ones most relevant to time:
+To extract useful information from the `'tags'` column, we transformed the tags in the form of strings to list of strings. However, as we attempted to generate the most common tags from the entire dataframe, the process was not successful due to the size of the data. We decided to randomly choose 2000 tags from the column and retrieved the top 50 most common tags. After browsing through the tags, we selected the ones more relevant to time:
 
 - 'occasion'
 - '15-minutes-or-less'
@@ -103,7 +103,84 @@ To extract useful information from the `'tags'` column, we transformed the tags 
 - '60-minutes-or-less'
 
 We created 5 new features using the tags from above, indicating whether one recipe contains the tag (1: True, 0: False)
-<!-- Fill in dataframe -->
+<table border="1" class="dataframe">
+	<thead>
+		<tr style="text-align: right;">
+			<th>minutes</th>
+			<th>n_steps</th>
+			<th>n_ingredients</th>
+			<th>protein</th>
+			<th>rating_average</th>
+			<th>60-minutes-or-less</th>
+			<th>30-minutes-or-less</th>
+			<th>15-minutes-or-less</th>
+			<th>4-hours-or-less</th>
+			<th>occasion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>40</td>
+			<td>10</td>
+			<td>9</td>
+			<td>3.0</td>
+			<td>4.0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>45</td>
+			<td>12</td>
+			<td>11</td>
+			<td>13.0</td>
+			<td>5.0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>40</td>
+			<td>6</td>
+			<td>9</td>
+			<td>22.0</td>
+			<td>5.0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>40</td>
+			<td>6</td>
+			<td>9</td>
+			<td>22.0</td>
+			<td>5.0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>40</td>
+			<td>6</td>
+			<td>9</td>
+			<td>22.0</td>
+			<td>5.0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+	</tbody>
+</table>
 
 We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last step in our pipeline, we chose to use DecisionTreeRegressor as the estimator object, instead of LinearRegressor().
 
