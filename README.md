@@ -31,7 +31,7 @@ From our dataset, we transformed the string dates in the `'submitted'` column to
 
 ### **Dataset Brief Overview**
 
-We performed similar data cleaning process as we did in our previous project(https://jesshung323.github.io/recipe-user-interaction-analysis/).
+We performed similar data cleaning process as we did in our previous [project](https://jesshung323.github.io/recipe-user-interaction-analysis/).
 
 ***Relevant Columns***: `'minutes'`, `'rating_average'`, `'n_steps'`, `'n_ingredients'`, `'tags'`, `'protein'`
 
@@ -42,7 +42,7 @@ We performed similar data cleaning process as we did in our previous project(htt
 
 ***Relevant Columns***: `'minutes'`, `'n_steps'`, `'n_ingredients'`
 
-In our baseline model, we chose the two most intuitive features at first glance to use for prediction. It is natural for one to consider that the more steps or ingredients a recipe involves, the longer the recipe would take. 
+In our baseline model 1.0, we chose the two most intuitive features at first glance to use for prediction. It is natural for one to consider that the more steps or ingredients a recipe involves, the longer the recipe would take. 
 
 ***Feature Description***
 
@@ -77,7 +77,7 @@ We can see that the standard deviation of the variable is significantly higher t
 - pipeline score (R^2): 0.23434163141717024
 - pipeline RMSE: 21.687973493850077
 
-After furthuring the data cleaning step, we can see that the R^2 score has improved for our baseline model, and the RMSE descreased drastically. This also suggests that our model may not be well-generalized to unseen data because it is possible for testing data to contain recipes with minutes that are way beyond the threshold that was used to determine outliers in our data cleaning process.
+After furthuring the data cleaning step, we can see that the R^2 score has improved for our baseline model 2.0, and the RMSE descreased drastically. This also suggests that our model may not be well-generalized to unseen data because it is possible for testing data to contain recipes with minutes that are way beyond the threshold that was used to determine outliers in our data cleaning process.
 
 In addition, when we plot a scatterplot visualizing the relationship between `'n_steps'` and `'n_ingredients'` with `'minutes'` respectively, we see that their relationships are not linear 😟 This is a factor we will take into consideration when building a more informative model later. 
 
