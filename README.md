@@ -210,6 +210,8 @@ Our final model is an improvement compared to the baseline model not only by out
 
 ***Alternative Hypothesis***: the accuracy of the two groups (equal and over avg_protein and under avg_protein) are different, and the difference was NOT by random chance.
 
+<iframe src="diff_in_accuracy.html" width=800 height=600 frameBorder=0></iframe>
+
 ***p_value***: 0.09
 
 ***Conclusion***: Since the resulting p-value is higher than the chosen significance level (0.05), we fail to reject the null, meaning the difference in accuracy across the two groups might NOT be significant.
