@@ -218,7 +218,7 @@ Our final model is an improvement compared to the baseline model not only by out
 
 <iframe src="assets/diff_in_abs_RMSE.html" width=800 height=600 frameBorder=0></iframe>
 
-***p_value***: 0.99
+***p_value***: 0.89
 
 ***Conclusion***: Since the resulting p-value is higher than the chosen significance level (0.05), we fail to reject the null, meaning the difference in accuracy across the two groups might NOT be significant.
 
