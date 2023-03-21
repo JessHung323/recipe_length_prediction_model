@@ -214,7 +214,7 @@ Our final model is an improvement compared to the baseline model not only by out
 
 ***Test Statistics***: difference in RMSE
 
-<iframe src="assets/diff_in_RMSE.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/diff_in_abs_RMSE.html" width=800 height=600 frameBorder=0></iframe>
 
 ***p_value***: 0.99
 
