@@ -204,7 +204,7 @@ Our final model is an improvement compared to the baseline model not only by out
 
 ***Group y***: protein equal to or over the average of the protein from the final model
 
-***Metric***: Root Mean Squared Error (RMSE)
+***Evaluation Metric***: Root Mean Squared Error (RMSE)
 
 ***Null Hypothesis***: the RMSE of the two groups (equal to or over avg_protein and under avg_protein) are the same (the difference is by random chance).
 
