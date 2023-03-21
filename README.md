@@ -204,15 +204,19 @@ Our final model is an improvement compared to the baseline model not only by out
 
 ***Group y***: protein equal to or over the average of the protein from the final model
 
-***Metric***: mean protein from the final model
+***Metric***: Root Mean Squared Error (RMSE)
 
-***Null Hypothesis***: the accuracy of the two groups (equal to or over avg_protein and under avg_protein) are the same, and the difference was by random chance.
+***Null Hypothesis***: the RMSE of the two groups (equal to or over avg_protein and under avg_protein) are the same (the difference is by random chance).
 
-***Alternative Hypothesis***: the accuracy of the two groups (equal and over avg_protein and under avg_protein) are different, and the difference was NOT by random chance.
+***Alternative Hypothesis***: the RMSE of the two groups (equal to or over avg_protein and under avg_protein) are different, and the difference was NOT by random chance.
 
-<iframe src="assets/diff_in_accuracy.html" width=800 height=600 frameBorder=0></iframe>
+***Significance Level***: 0.05
 
-***p_value***: 0.09
+***Test Statistics***: difference in RMSE
+
+<iframe src="assets/diff_in_RMSE.html" width=800 height=600 frameBorder=0></iframe>
+
+***p_value***: 0.99
 
 ***Conclusion***: Since the resulting p-value is higher than the chosen significance level (0.05), we fail to reject the null, meaning the difference in accuracy across the two groups might NOT be significant.
 
