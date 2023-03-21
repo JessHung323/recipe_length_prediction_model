@@ -23,11 +23,11 @@ This time in this project, we aim to derive features from the given dataset to:
 
 ***Predict the time, in minutes, a recipe takes to prepare*** 
 
-Since we are predicting a numeric variable with non-finite choices, we will be using *regression*, instead of classification. We chose to predict the `'minutes'` column of the dataframe because as users of recipes, we wish to follow recipes that generally don't take too long to complete and we would like to have a rough estimate on how long the recipe would take. If we were told features such as the number of ingredients needed or number steps the the recipe has, we can perhaps have a relatively accurate estimate of how long that recipe would take before fully committing to executing it.
+Since we are predicting a numeric variable with non-finite choices, we will be using *regression*, instead of classification. We chose to predict the `'minutes'` column of the dataframe because as users of recipes, we wish to follow recipes that generally don't take too long to complete and we would like to have a rough estimate on how long the recipe would take actually. If we were told features such as the number of ingredients needed or number steps the the recipe has, we can perhaps have a relatively accurate estimate of how long that recipe would take before fully committing to executing it.
 
 In this project, we would use R^2 score and the Root Mean Squared Error (RMSE) to analyze the accuracy of our predictions on the training dataset. These scores and metrics are more intuitive for readers and easy to interpret as we try to predict a numeric variable.
 
-From our dataset, we transformed the string dates in the `'submitted'` column to the type `datetime` to better understand the timespan of the data. We see that the oldest recipe was submitted on 2008-01-01, while the most recent recipe was submitted on 2018-12-04. We believe that the other columns needed from this project and the essence of our prediction will not be greatly impacted by when the data was collected.
+From our dataset, we transformed the string dates in the `'submitted'` column to the type `datetime` to better understand the timespan of the data. We see that the oldest recipe was submitted on 2008-01-01, while the most recent recipe was submitted on 2018-12-04. We believe that the other columns needed from this project and the essence of our prediction will not be greatly impacted by when the data was collected. Although we will be using the `tags` column that contains indicators such as "60-minutes-or-less", we believe these are valid features to use because, in reality, we generally do know an upperbound to the time a recipe might take when we receive the recipe.
 
 ### **Dataset Brief Overview**
 
@@ -85,7 +85,7 @@ In addition, when we plot a scatterplot visualizing the relationship between `'n
 
 ***Relevant Columns***: `'minutes'`, `'n_steps'`, `'n_ingredients'`, `'tags'`, `'protein'`, `''rating_average''`
 
-We incorporated three new features in our final model. 
+We incorporated three new columns in our final model. 
 
 We chose `'tags'` because we observed that there are tags within the column for each recipe that indicate how long the recipe might take. For example, there exist tags such as "60-minutes-or-less" and "1-day-or-more". These tags may be a useful indicator and predictor for our model.
 
@@ -94,13 +94,15 @@ We believe `'protein'` may be a useful column because in general, a recipe with 
 
 Finally, we added the `'rating_average'` feature because a recipe that takes too much time may receive a lower rating as users have to devote much more effort.
 
-To extract useful information from the `'tags'` column, we transformed the tags in the form of strings to list of strings. However, as we attempted to generate the most common tags from the entire dataframe, the process was not successful due to the size of the data. We decided to randomly choose 3000 tags from the column and retrieved the top 50 most common tags. After browsing through the tags, we selected the ones more relevant to time:
+To extract useful information from the `'tags'` column, we transformed the tags in the form of strings to list of strings. However, as we attempted to generate the most common tags from the entire dataframe, the process was not successful due to the size of the data. We decided to randomly choose 3000 rows of tags from the column and retrieved the top 50 most common tags. After browsing through the tags, we selected the ones more relevant to time:
 
 - 'occasion'
 - '15-minutes-or-less'
 - '30-minutes-or-less'
 - '4-hours-or-less'
 - '60-minutes-or-less'
+
+We chose 'occasion' because an occasion is usally more formal and requires more sophisticated dishes, hence the preparation time for these recipes may be longer.
 
 We created 5 new features using the tags from above, indicating whether one recipe contains the tag (1: True, 0: False)
 <table border="1" class="dataframe">
@@ -184,12 +186,12 @@ We created 5 new features using the tags from above, indicating whether one reci
 
 We utilized Binarizer and StandardScaler in our ColumnTransformer. As the last step in our pipeline, we chose to use DecisionTreeRegressor() as the estimator object, instead of LinearRegressor().
 
-We encountered issues with the `'rating_average'` column as some recipes have not been rated. To address this issue, we randomly sampled a number of values from the `'rating_average'` column to fill the np.NaN. Since there are mutiple columns that do not contain the information we need, such as `'id'`, `'name'`, etc. We choose to drop the qualitative columns from our dataframe. Now the only remaing columns are:
+We encountered issues with the `'rating_average'` column as some recipes have not been rated. To address this issue, we randomly sampled a number of values from the `'rating_average'` column to fill the np.NaN. Since there are mutiple columns that do not contain the information we need, such as `'id'`, `'name'`, etc. We choose to drop the qualitative columns from our dataframe. Now the only remaining columns are:
 
 `'minutes'`, `'n_steps'`, `'n_ingredients'`, `'rating_average'`, `'protein'`,`'occasion'`, `'4-hours-or-less'`, `'60-minutes-or-less'`, `'30-minutes-or-less'`, `'15-minutes-or-less'`
 
 
-If we select the `max_depth` and `min_sample_split` of the DecisionTree to be 5, the result yielded is as follows:
+If we select the `max_depth` and `min_sample_split` of the DecisionTree to be 5 (as suggested by our GridSearchCV), the result yielded is as follows:
 - pipeline score (R^2): 0.8929511159009624
 - pipeline RMSE: 8.109488244776092
 
