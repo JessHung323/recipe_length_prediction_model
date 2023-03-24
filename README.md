@@ -208,7 +208,7 @@ Our final model is an improvement compared to the baseline model not only by out
 
 ***Evaluation Metric***: Root Mean Squared Error (RMSE)
 
-***Null Hypothesis***: the RMSE of the two groups (equal to or over avg_protein and under avg_protein) are the same (the difference is by random chance).
+***Null Hypothesis***: the RMSE of the two groups (equal to or over avg_protein and under avg_protein) are roughly the same (the difference is by random chance).
 
 ***Alternative Hypothesis***: the RMSE of the two groups (equal to or over avg_protein and under avg_protein) are different, and the difference was NOT by random chance.
 
@@ -220,7 +220,7 @@ Our final model is an improvement compared to the baseline model not only by out
 
 ***p_value***: 0.89
 
-***Conclusion***: Since the resulting p-value is higher than the chosen significance level (0.05), we fail to reject the null, meaning the difference in accuracy across the two groups might NOT be significant.
+***Conclusion***: Since the resulting p-value is higher than the chosen significance level (0.05), we fail to reject the null, meaning the difference in accuracy across the two groups is likely due to random chance.
 
 
 
